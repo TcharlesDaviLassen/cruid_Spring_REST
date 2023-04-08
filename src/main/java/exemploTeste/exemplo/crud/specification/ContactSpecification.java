@@ -1,15 +1,11 @@
 package exemploTeste.exemplo.crud.specification;
 
 import exemploTeste.exemplo.crud.entity.Contact;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
-
 import org.jetbrains.annotations.NotNull;
-import org.junit.Ignore;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ContactSpecification implements Specification<Contact> {
