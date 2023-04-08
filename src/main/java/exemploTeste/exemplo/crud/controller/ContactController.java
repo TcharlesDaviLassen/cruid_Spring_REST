@@ -59,7 +59,7 @@ public class ContactController {
             return ResponseEntity.ok(book);  // return 200, with json body
         } catch (ResourceNotFoundException ex) {
             return null;
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // return 404, with null body
+            // return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // return 404, with null body
         }
     }
 
@@ -82,12 +82,13 @@ public class ContactController {
     }
 
     @PutMapping(value = "/contacts/{contactId}")
-    public ResponseEntity<Contact> updateContact(@Valid @RequestBody Contact contact,
-                                                 @PathVariable long contactId) {
+    public ResponseEntity<Contact> updateContact(
+            @Valid @RequestBody Contact contact,
+            @PathVariable long contactId) {
         try {
             contact.setId(contactId);
             contactService.update(contact);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(contact);
         } catch (ResourceNotFoundException ex) {
             // log exception first, then return Not Found (404)
             logger.error(ex.getMessage());
@@ -100,8 +101,9 @@ public class ContactController {
     }
 
     @PatchMapping("/contacts/{contactId}")
-    public ResponseEntity<Void> updateAddress(@PathVariable long contactId,
-                                              @RequestBody Contact address) {
+    public ResponseEntity<Void> updateAddress(
+            @PathVariable long contactId,
+            @RequestBody Contact address) {
         try {
             contactService.updateAddress(contactId, address);
             return ResponseEntity.ok().build();
@@ -123,7 +125,6 @@ public class ContactController {
         }
     }
 }
-
 
 /*
     @RestControlleré uma anotação de conveniência que é anotada com @Controllere @ResponseBody.

@@ -1,6 +1,5 @@
 package exemploTeste.exemplo.crud.exception;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

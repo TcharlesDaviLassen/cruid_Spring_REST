@@ -51,8 +51,10 @@ public class ContactService {
     public Contact save(Contact contact) throws BadResourceException, ResourceAlreadyExistsException {
         if (!StringUtils.isEmpty(contact.getName())) {
             if (contact.getId() != null && existsById(contact.getId())) {
-                throw new ResourceAlreadyExistsException("Contact with id: " + contact.getId() +
-                        " already exists");
+                throw new ResourceAlreadyExistsException("Contact with id: " +
+                        contact.getId() +
+                        " already exists"
+                );
             }
             return contactRepository.save(contact);
         } else {
@@ -62,8 +64,7 @@ public class ContactService {
         }
     }
 
-    public void update(Contact contact)
-            throws BadResourceException, ResourceNotFoundException {
+    public void update(Contact contact) throws BadResourceException, ResourceNotFoundException {
         if (!StringUtils.isEmpty(contact.getName())) {
             if (!existsById(contact.getId())) {
                 throw new ResourceNotFoundException("Cannot find Contact with id: " + contact.getId());
@@ -76,8 +77,7 @@ public class ContactService {
         }
     }
 
-    public void updateAddress(Long id, Contact address)
-            throws ResourceNotFoundException {
+    public void updateAddress(Long id, Contact address) throws ResourceNotFoundException {
         Contact contact = findById(id);
         contact.setAddress1(address.getAddress1());
         contact.setAddress2(address.getAddress2());
