@@ -115,13 +115,14 @@ public class ContactController {
     }
 
     @DeleteMapping(path = "/contacts/{contactId}")
-    public ResponseEntity<Void> deleteContactById(@PathVariable long contactId) {
+    public ResponseEntity<String> deleteContactById(@PathVariable long contactId) {
         try {
             contactService.deleteById(contactId);
             return ResponseEntity.ok().build();
         } catch (ResourceNotFoundException ex) {
             logger.error(ex.getMessage());
-            return ResponseEntity.notFound().build();
+            // return ResponseEntity.notFound().build();
+            return ResponseEntity.ok().body("Não foi encontrado o ID do contacto de número: " + contactId);
         }
     }
 }

@@ -36,9 +36,10 @@ public class ContactSpecification implements Specification<Contact> {
 //        return null;
 //    }
 
-    public Predicate toPredicate(@NotNull Root<Contact> root, @NotNull CriteriaQuery<?> cq,
-                                 CriteriaBuilder cb) {
-
+    public Predicate toPredicate(
+            @NotNull Root<Contact> root,
+            @NotNull CriteriaQuery<?> cq,
+            CriteriaBuilder cb) {
         Predicate p = cb.disjunction();
 
         if (filter.getName() != null) {
